@@ -1,3 +1,45 @@
 const appname = "eMart";
 const appversion = "Version 1.0.0";
-const credits = "@Baaba Devs";
+const credits = "Flutter";
+const email = "Name";
+const emailHint = "admin@admin.com";
+const password = "Password";
+const passwordHint = "******";
+const reTypepassword = "Retype Password";
+const reTypepasswordHint = "******";
+const name = "Name";
+const namehint = "Max dev";
+const forgetPass = "Forget Password";
+const login = "Login";
+const signup = "Sign Up";
+const createNewAccount = "or, Create a new account";
+const loginwith = "Log in with";
+const privacyPolicy = "Privacy Policy";
+const termsAndCondition = "Terms and Condition";
+const alreadyHaveAccount = "Already have an account? ";
+
+//home screen string
+const todayDeal = "Today's deal";
+const flashSale = "Flash Deal";
+const topCatagories = "Top Catagories";
+const brand = "Brand";
+const topSeller = "Top Seller";
+const featuredCatagories = "Featured Catagories";
+const featuredProduct = "Featured Product";
+const womendress = "Women Dresses",
+    girlswatches = "Girls Watches",
+    mobilePhone = "Mobile phones",
+    boysGlasses = "Boys Glasses",
+    tshirts = "T Shirts",
+    girlsDress = "Girls Dresses";
+//catagory screen
+const catagories = "Catagory";
+const womenClothing = "Women Clothing",
+    menClothingFashion = "Men Clothing and Fashion",
+    compAccess = "Computer and Accessories",
+    autoMobile = "Automobile",
+    kidToy = "Kids toy",
+    sports = "Sports",
+    jewelery = "Jewelery",
+    cellPhone = "Cellphone ans Tab",
+    furniture = "Furniture";
