@@ -1,7 +1,7 @@
 const appname = "eMart";
 const appversion = "Version 1.0.0";
 const credits = "Flutter";
-const email = "Name";
+const email = "Email";
 const emailHint = "admin@admin.com";
 const password = "Password";
 const passwordHint = "******";
@@ -17,6 +17,8 @@ const loginwith = "Log in with";
 const privacyPolicy = "Privacy Policy";
 const termsAndCondition = "Terms and Condition";
 const alreadyHaveAccount = "Already have an account? ";
+const loggedIn = "Login Successful";
+const loggedOut = "Loged out";
 
 //home screen string
 const todayDeal = "Today's deal";
@@ -43,3 +45,15 @@ const womenClothing = "Women Clothing",
     jewelery = "Jewelery",
     cellPhone = "Cellphone ans Tab",
     furniture = "Furniture";
+
+//item details strings
+const video = "Video",
+    reviews = "Reviews",
+    dellerPolocy = "Seller Policy",
+    returnPolicy = "Return Policy",
+    supportPolicy = "Support Polocy",
+    productsYouMayLike = "Product you may Like";
+
+//profiles strings
+
+const wishlist = "My Wishlist", orders = "My orders", messages = "Messages";

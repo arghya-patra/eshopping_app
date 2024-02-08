@@ -4,6 +4,7 @@ import 'package:eshopping_app/common_widgets/common_button.dart';
 import 'package:eshopping_app/common_widgets/custom_textfield.dart';
 import 'package:eshopping_app/consts/consts.dart';
 import 'package:eshopping_app/consts/lists.dart';
+import 'package:eshopping_app/controllers/auth_controller.dart';
 import 'package:eshopping_app/views/auth_screen/signup_screen.dart';
 import 'package:eshopping_app/views/homeScreen/home.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  var controller = Get.put(Authcontroller());
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -33,57 +35,80 @@ class _LoginScreenState extends State<LoginScreen> {
           10.heightBox,
           "Login to $appname".text.fontFamily(bold).white.size(18).make(),
           10.heightBox,
-          Column(
-            children: [
-              customTextfield(title: email, hint: emailHint),
-              customTextfield(title: password, hint: passwordHint),
-              Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: () {}, child: forgetPass.text.make())),
-              5.heightBox,
-              commonButton(
-                  title: "Login",
-                  color: redColor,
-                  textColor: whiteColor,
-                  onpress: () {
-                    Get.to(() => Home());
-                  }).box.width(context.screenWidth - 70).make(),
-              5.heightBox,
-              createNewAccount.text.color(fontGrey).make(),
-              commonButton(
-                      title: signup,
-                      color: golden,
-                      textColor: whiteColor,
-                      onpress: () {})
-                  .box
-                  .width(context.screenWidth - 70)
-                  .make(),
-              10.heightBox,
-              loginwith.text.make(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                    3,
-                    (index) => Padding(
-                        padding: EdgeInsets.all(8),
-                        child: CircleAvatar(
-                          backgroundColor: lightGrey,
-                          radius: 25,
-                          child: Image.asset(
-                            socialIconList[index],
-                            width: 30,
-                          ),
-                        ))),
-              )
-            ],
-          )
-              .box
-              .white
-              .rounded
-              .padding(const EdgeInsets.all(15))
-              .width(context.screenWidth - 70)
-              .make(),
+          Obx(
+            () => Column(
+              children: [
+                customTextfield(
+                    title: email,
+                    hint: emailHint,
+                    isPass: false,
+                    controller: controller.emailController),
+                customTextfield(
+                    title: password,
+                    hint: passwordHint,
+                    isPass: true,
+                    controller: controller.passWordController),
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                        onPressed: () {}, child: forgetPass.text.make())),
+                5.heightBox,
+                controller.isLoading.value
+                    ? const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(redColor),
+                      )
+                    : commonButton(
+                        title: "Login",
+                        color: redColor,
+                        textColor: whiteColor,
+                        onpress: () async {
+                          controller.isLoading(true);
+                          await controller
+                              .loginMethod(context: context)
+                              .then((value) {
+                            if (value != null) {
+                              VxToast.show(context, msg: loggedIn);
+                              Get.offAll(() => Home());
+                            } else {
+                              controller.isLoading(false);
+                            }
+                          });
+                        }).box.width(context.screenWidth - 70).make(),
+                5.heightBox,
+                createNewAccount.text.color(fontGrey).make(),
+                commonButton(
+                    title: signup,
+                    color: golden,
+                    textColor: whiteColor,
+                    onpress: () {
+                      Get.to(() => SignupScreen());
+                    }).box.width(context.screenWidth - 70).make(),
+                10.heightBox,
+                loginwith.text.make(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                      3,
+                      (index) => Padding(
+                          padding: EdgeInsets.all(8),
+                          child: CircleAvatar(
+                            backgroundColor: lightGrey,
+                            radius: 25,
+                            child: Image.asset(
+                              socialIconList[index],
+                              width: 30,
+                            ),
+                          ))),
+                )
+              ],
+            )
+                .box
+                .white
+                .rounded
+                .padding(const EdgeInsets.all(15))
+                .width(context.screenWidth - 70)
+                .make(),
+          ),
         ],
       )),
     ));

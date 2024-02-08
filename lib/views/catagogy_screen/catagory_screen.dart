@@ -1,6 +1,9 @@
 import 'package:eshopping_app/common_widgets/bg_widget.dart';
 import 'package:eshopping_app/consts/consts.dart';
+import 'package:eshopping_app/consts/lists.dart';
+import 'package:eshopping_app/views/catagogy_screen/catagoey_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CatagoryScreen extends StatelessWidget {
   const CatagoryScreen({Key? key}) : super(key: key);
@@ -12,19 +15,39 @@ class CatagoryScreen extends StatelessWidget {
       appBar:
           AppBar(title: topCatagories.text.fontFamily(semibold).white.make()),
       body: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: GridView.builder(
             shrinkWrap: true,
             itemCount: 9,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
                 mainAxisExtent: 200),
             itemBuilder: (context, index) {
               return Column(
-                children: [],
-              ).box.white.rounded.clip(Clip.antiAlias).outerShadowSm.make();
+                children: [
+                  Image.asset(catagoryImages[index],
+                      height: 100, width: 200, fit: BoxFit.fill),
+                  10.heightBox,
+                  catagoriesList[index]
+                      .text
+                      .color(darkFontGrey)
+                      .align(TextAlign.center)
+                      .make()
+                ],
+              )
+                  .box
+                  .white
+                  .rounded
+                  .clip(Clip.antiAlias)
+                  .outerShadowSm
+                  .make()
+                  .onTap(() {
+                Get.to(() => CatagoryDetails(
+                      title: catagoriesList[index],
+                    ));
+              });
             }),
       ),
     ));
