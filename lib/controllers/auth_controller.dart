@@ -27,6 +27,9 @@ class Authcontroller extends GetxController {
       userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
+      print("&&&&&&&&");
+      print(e.toString());
+      print("********");
       VxToast.show(context, msg: e.toString());
     }
     return userCredential;
@@ -41,7 +44,10 @@ class Authcontroller extends GetxController {
       "password": password,
       "email": email,
       "imgUrl": '',
-      "id": currentUser!.uid
+      "id": currentUser!.uid,
+      "cart_count": "00",
+      "wishlist_count": "00",
+      "order_count": "00"
     });
   }
 

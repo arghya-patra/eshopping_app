@@ -20,6 +20,13 @@ class HomeScreen extends StatelessWidget {
             child: Column(
           children: [
             Container(
+              color: redColor,
+              height: 20,
+              width: 20,
+            ).box.make().onTap(() {
+              auth.signOut();
+            }),
+            Container(
               alignment: Alignment.center,
               color: lightGrey,
               height: 60,
@@ -99,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                                           ? icBrands
                                           : icTopSeller,
                                   title: index == 0
-                                      ? topCatagories
+                                      ? topcategories
                                       : index == 1
                                           ? brand
                                           : topSeller,
@@ -107,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                     20.heightBox,
                     Align(
                       alignment: Alignment.center,
-                      child: featuredCatagories.text
+                      child: featuredcategories.text
                           .color(darkFontGrey)
                           .size(18)
                           .fontFamily(semibold)

@@ -124,7 +124,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               });
                             } catch (e) {
                               auth.signOut();
-                              VxToast.show(context, msg: e.toString());
+                              print("********");
+                              print(e.toString());
+                              VxToast.show(context,
+                                  msg: e.toString(), showTime: 5000);
                               controller.isLoading(false);
                             }
                           }

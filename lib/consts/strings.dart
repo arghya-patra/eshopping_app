@@ -4,6 +4,8 @@ const credits = "Flutter";
 const email = "Email";
 const emailHint = "admin@admin.com";
 const password = "Password";
+const oldpassword = "Old Password";
+const newPassword = "New Password";
 const passwordHint = "******";
 const reTypepassword = "Retype Password";
 const reTypepasswordHint = "******";
@@ -23,10 +25,10 @@ const loggedOut = "Loged out";
 //home screen string
 const todayDeal = "Today's deal";
 const flashSale = "Flash Deal";
-const topCatagories = "Top Catagories";
+const topcategories = "Top categories";
 const brand = "Brand";
 const topSeller = "Top Seller";
-const featuredCatagories = "Featured Catagories";
+const featuredcategories = "Featured categories";
 const featuredProduct = "Featured Product";
 const womendress = "Women Dresses",
     girlswatches = "Girls Watches",
@@ -34,16 +36,16 @@ const womendress = "Women Dresses",
     boysGlasses = "Boys Glasses",
     tshirts = "T Shirts",
     girlsDress = "Girls Dresses";
-//catagory screen
-const catagories = "Catagory";
-const womenClothing = "Women Clothing",
-    menClothingFashion = "Men Clothing and Fashion",
-    compAccess = "Computer and Accessories",
+//category screen
+const categories = "category";
+const womenClothing = "Women Dress",
+    menClothingFashion = "Men Clothing & Fashion",
+    compAccess = "Computer & Accessories",
     autoMobile = "Automobile",
-    kidToy = "Kids toy",
+    kidToy = "Kids & Toys",
     sports = "Sports",
     jewelery = "Jewelery",
-    cellPhone = "Cellphone ans Tab",
+    cellPhone = "Cellphone & Tab",
     furniture = "Furniture";
 
 //item details strings
