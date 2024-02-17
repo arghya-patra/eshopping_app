@@ -59,3 +59,5 @@ const video = "Video",
 //profiles strings
 
 const wishlist = "My Wishlist", orders = "My orders", messages = "Messages";
+//psyment methode string
+const paypal = "Paypal", stripe = "Stripe", cod = "cash on Delivery";

@@ -4,6 +4,7 @@ import 'package:eshopping_app/common_widgets/loading_indicator.dart';
 import 'package:eshopping_app/consts/consts.dart';
 import 'package:eshopping_app/controllers/cart_controller.dart';
 import 'package:eshopping_app/services/firestore_services.dart';
+import 'package:eshopping_app/views/cart_screen/shipping_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,6 +18,17 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
     return Scaffold(
         backgroundColor: whiteColor,
+        bottomNavigationBar: SizedBox(
+          width: context.screenWidth - 40,
+          height: 60,
+          child: commonButton(
+              textColor: whiteColor,
+              title: "Proceed to shipping",
+              onpress: () {
+                Get.to(() => const ShippingDetails());
+              },
+              color: redColor),
+        ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: "Shopping cart".text.semiBold.color(darkFontGrey).make(),
@@ -92,14 +104,6 @@ class CartScreen extends StatelessWidget {
                         .roundedSM
                         .make(),
                     10.heightBox,
-                    SizedBox(
-                      width: context.screenWidth - 40,
-                      child: commonButton(
-                          textColor: whiteColor,
-                          title: "Proceed to shipping",
-                          onpress: () {},
-                          color: redColor),
-                    )
                   ]),
                 );
               }
