@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(HomeControll());
+    var controller = Get.put(HomeController());
     var navBarItem = [
       BottomNavigationBarItem(
           icon: Image.asset(
@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
     var navBody = [
       HomeScreen(),
       CartScreen(),
-      categoryScreen(),
+      CategoryScreen(),
       ProfileScreen()
     ];
     return WillPopScope(

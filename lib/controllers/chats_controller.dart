@@ -15,7 +15,7 @@ class ChatsController extends GetxController {
   var chats = firestore.collection(chatCollection);
   var friendName = Get.arguments[0];
   var friendId = Get.arguments[1];
-  var senderName = Get.find<HomeControll>().username;
+  var senderName = Get.find<HomeController>().username;
   var currentId = currentUser!.uid;
   var msgController = TextEditingController();
   dynamic chatDocId;

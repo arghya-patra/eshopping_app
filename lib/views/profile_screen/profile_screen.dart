@@ -1,13 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eshopping_app/common_widgets/bg_widget.dart';
+import 'package:eshopping_app/common_widgets/loading_indicator.dart';
 import 'package:eshopping_app/consts/consts.dart';
 import 'package:eshopping_app/consts/lists.dart';
 import 'package:eshopping_app/controllers/auth_controller.dart';
 import 'package:eshopping_app/controllers/profile_controller.dart';
 import 'package:eshopping_app/services/firestore_services.dart';
 import 'package:eshopping_app/views/auth_screen/login_screen.dart';
+import 'package:eshopping_app/views/chat_screen/messaging_screen.dart';
+import 'package:eshopping_app/views/orders_screen/orders_screem.dart';
 import 'package:eshopping_app/views/profile_screen/components/details_card.dart';
 import 'package:eshopping_app/views/profile_screen/edit_profile_screen.dart';
+import 'package:eshopping_app/views/wishlist_screen/wishlist_screen.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+
     return bgWidget(
         child: Scaffold(
             body: StreamBuilder(
@@ -86,30 +91,75 @@ class ProfileScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      10.heightBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          detailsCard(
-                              count: "${data["cart_count"]}",
-                              title: "In your cart",
-                              width: context.screenWidth / 3.4),
-                          detailsCard(
-                              count: "${data["wishlist_count"]}",
-                              title: "In your wishlist",
-                              width: context.screenWidth / 3.4),
-                          detailsCard(
-                              count: "${data["order_count"]}",
-                              title: "In your order",
-                              width: context.screenWidth / 3.4),
-                        ],
-                      ),
+                      20.heightBox,
+
+                      FutureBuilder(
+                          future: FireStoreServices.getCounts(),
+                          builder: ((context, AsyncSnapshot snapshot) {
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: loadingIndicator(),
+                              );
+                            } else {
+                              print(snapshot.data);
+                              var countData = snapshot.data;
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  detailsCard(
+                                      count: countData[0].toString(),
+                                      title: "In your cart",
+                                      width: context.screenWidth / 3.4),
+                                  detailsCard(
+                                      count: countData[1].toString(),
+                                      title: "In your wishlist",
+                                      width: context.screenWidth / 3.4),
+                                  detailsCard(
+                                      count: countData[2].toString(),
+                                      title: "In your order",
+                                      width: context.screenWidth / 3.4),
+                                ],
+                              );
+                            }
+                          })),
+
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //   children: [
+                      //     detailsCard(
+                      //         count: "${data["cart_count"]}",
+                      //         title: "In your cart",
+                      //         width: context.screenWidth / 3.4),
+                      //     detailsCard(
+                      //         count: "${data["wishlist_count"]}",
+                      //         title: "In your wishlist",
+                      //         width: context.screenWidth / 3.4),
+                      //     detailsCard(
+                      //         count: "${data["order_count"]}",
+                      //         title: "In your order",
+                      //         width: context.screenWidth / 3.4),
+                      //   ],
+                      // ),
 
                       //buttons section
                       ListView.separated(
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return ListTile(
+                                  onTap: () {
+                                    switch (index) {
+                                      case 0:
+                                        Get.to(() => WishListscreen());
+                                        break;
+                                      case 1:
+                                        Get.to(() => OrdersScreen());
+                                        break;
+                                      case 2:
+                                        Get.to(() => MessagesScreen());
+                                        break;
+                                    }
+                                  },
                                   leading: Image.asset(
                                     profileButtonsIcon[index],
                                     width: 22,

@@ -51,6 +51,7 @@ class CartScreen extends StatelessWidget {
               } else {
                 var data = snapshot.data!.docs;
                 controller.calculate(data);
+                controller.productSnapshot = data;
                 return Padding(
                   padding: EdgeInsets.all(8),
                   child: Column(children: [
@@ -59,8 +60,11 @@ class CartScreen extends StatelessWidget {
                             itemCount: data.length,
                             itemBuilder: ((context, index) {
                               return ListTile(
-                                  leading:
-                                      Image.network("${data[index]['img']}"),
+                                  leading: Image.network(
+                                    "${data[index]['img']}",
+                                    width: 80,
+                                    fit: BoxFit.cover,
+                                  ),
                                   title:
                                       "${data[index]['title']} (x ${data[index]['qty']})"
                                           .text

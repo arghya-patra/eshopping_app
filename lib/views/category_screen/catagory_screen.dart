@@ -6,8 +6,8 @@ import 'package:eshopping_app/views/category_screen/category_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class categoryScreen extends StatelessWidget {
-  const categoryScreen({Key? key}) : super(key: key);
+class CategoryScreen extends StatelessWidget {
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class categoryScreen extends StatelessWidget {
                   .make()
                   .onTap(() {
                 controller.getSubCategories(categoriesList[index]);
-                Get.to(() => categoryDetails(
+                Get.to(() => CategoryDetails(
                       title: categoriesList[index],
                     ));
               });

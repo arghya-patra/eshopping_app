@@ -1,7 +1,7 @@
 import 'package:eshopping_app/consts/consts.dart';
 import 'package:get/get.dart';
 
-class HomeControll extends GetxController {
+class HomeController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
@@ -11,6 +11,7 @@ class HomeControll extends GetxController {
 
   var currentNavIndex = 0.obs;
   var username = '';
+  var searchController = TextEditingController();
   getUsername() async {
     var n = await firestore
         .collection(userCollection)

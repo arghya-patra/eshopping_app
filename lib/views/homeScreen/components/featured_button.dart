@@ -1,5 +1,7 @@
 import 'package:eshopping_app/consts/consts.dart';
+import 'package:eshopping_app/views/category_screen/category_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget featuredButton({String? title, icon}) {
   return Row(
@@ -20,5 +22,8 @@ Widget featuredButton({String? title, icon}) {
       .roundedSM
       .padding(EdgeInsets.all(4))
       .outerShadowSm
-      .make();
+      .make()
+      .onTap(() {
+    Get.to(() => CategoryDetails(title: title));
+  });
 }
