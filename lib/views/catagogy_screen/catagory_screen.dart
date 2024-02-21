@@ -1,7 +1,7 @@
 import 'package:eshopping_app/common_widgets/bg_widget.dart';
 import 'package:eshopping_app/consts/consts.dart';
 import 'package:eshopping_app/consts/lists.dart';
-import 'package:eshopping_app/views/catagogy_screen/catagoey_detail.dart';
+import 'package:eshopping_app/views/catagogy_screen/catagory_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,7 @@ class CatagoryScreen extends StatelessWidget {
     return bgWidget(
         child: Scaffold(
       appBar:
-          AppBar(title: topCatagories.text.fontFamily(semibold).white.make()),
+          AppBar(title: topcategories.text.fontFamily(semibold).white.make()),
       body: Container(
         padding: const EdgeInsets.all(12),
         child: GridView.builder(
@@ -27,10 +27,10 @@ class CatagoryScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return Column(
                 children: [
-                  Image.asset(catagoryImages[index],
+                  Image.asset(categoryImages[index],
                       height: 100, width: 200, fit: BoxFit.fill),
                   10.heightBox,
-                  catagoriesList[index]
+                  categoriesList[index]
                       .text
                       .color(darkFontGrey)
                       .align(TextAlign.center)
@@ -45,7 +45,7 @@ class CatagoryScreen extends StatelessWidget {
                   .make()
                   .onTap(() {
                 Get.to(() => CatagoryDetails(
-                      title: catagoriesList[index],
+                      title: categoriesList[index],
                     ));
               });
             }),
