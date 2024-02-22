@@ -29,13 +29,13 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
             child: Column(
           children: [
-            Container(
-              color: redColor,
-              height: 20,
-              width: 20,
-            ).box.make().onTap(() {
-              auth.signOut();
-            }),
+            // Container(
+            //   color: redColor,
+            //   height: 20,
+            //   width: 20,
+            // ).box.make().onTap(() {
+            //   auth.signOut();
+            // }),
             Container(
               alignment: Alignment.center,
               color: lightGrey,

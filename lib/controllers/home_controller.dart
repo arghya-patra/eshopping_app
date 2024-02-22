@@ -13,15 +13,23 @@ class HomeController extends GetxController {
   var username = '';
   var searchController = TextEditingController();
   getUsername() async {
+    print("*****************");
+    print(currentUser!.uid);
+
+    print("*****************");
+
     var n = await firestore
         .collection(userCollection)
         .where('id', isEqualTo: currentUser!.uid)
         .get()
         .then((value) {
       if (value.docs.isNotEmpty) {
+        print(value.docs.single['name']);
+        username = value.docs.single['name'];
+
         return value.docs.single['name'];
       }
     });
-    username = n;
+    //  username = n;
   }
 }
